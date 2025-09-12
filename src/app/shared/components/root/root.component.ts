@@ -48,6 +48,7 @@ export class RootComponent   {
           if(data.drinks && data.drinks !== "no data found"){
           this.sharedDataService.updateTable(data.drinks);
           } else {
+          this.sharedDataService.updateTable([]);
           this.error = true
           }
           this.loading = false;
