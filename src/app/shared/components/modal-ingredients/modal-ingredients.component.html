@@ -1,0 +1,20 @@
+
+ <section>
+<p-dialog
+  header="Ingredientes para  {{ cocktail().strDrink }}"
+  [(visible)]="visible"
+  [modal]="true"
+  [closable]="true"
+  (onHide)="onDialogHide()"
+>
+@if(ingredientes().length > 0){
+  <div class="ingredients">
+    <ul>
+      @for(ing of ingredientes(); track ing){
+      <li><i class="pi pi-check-circle"></i> {{ ing }}</li>
+      }
+    </ul>
+  </div>
+}
+</p-dialog>
+</section>

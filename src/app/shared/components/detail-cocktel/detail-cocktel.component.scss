@@ -1,3 +1,5 @@
+@use 'variables' as *;;
+
 .details-container {
   padding: 1.5rem;
   color: #e0e0e0;
@@ -9,7 +11,9 @@
 }
 
 .back-btn {
-  margin-bottom: 1rem;
+ margin-bottom: 1rem;
+ display: flex;
+ justify-content: space-between;
 }
 
 .card {
@@ -68,11 +72,6 @@
   padding: 1.5rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
   transition: transform 0.2s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-  }
-
   .header {
     display: flex;
     align-items: center;
@@ -132,5 +131,11 @@
         }
       }
     }
+  }
+}
+
+.language-toggle {
+  select {
+    margin: 0.5vw;
   }
 }

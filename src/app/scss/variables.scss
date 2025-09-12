@@ -1,0 +1,29 @@
+// Backgrounds
+$color-bg: #1f2937;
+$color-bg-secondary: #333e4f;
+$color-white: #f9fafb;
+$color-border: #4b5563;
+$color-primary: #3b82f6;
+$color-accent: #facc15;
+$color-error: #ef4444;
+$color-white: #f9fafb;
+$color-gray: #9ca3af;
+
+// Font & Borders
+$color-font: #e2e8f0;
+
+// Spacing
+$sp-1: 0.5rem;
+$sp-2: 1rem;
+$sp-3: 1.5rem;
+
+// Border Radius
+$radius-sm: 0.5rem;
+$radius-md: 0.75rem;
+$radius-lg: 1rem;
+
+// Shadows
+$shadow-default: 0 8px 25px rgba(0, 0, 0, 0.7);
+$shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.9);
+$shadow-soft: 0 2px 6px rgba(0, 0, 0, 0.5);
+$shadow-popover: 0 15px 35px rgba(0, 0, 0, 0.7);

@@ -11,19 +11,17 @@ export class SharedDataService {
   amountstrAlcoholic: WritableSignal<any> = signal<any>(undefined);
 
   updateTable(cocktails: any): void {
-    console.log('cocktails table', cocktails);
     this.tableData.set(cocktails);
     this.countAmountsAlcohol(cocktails);
   }
 
   cocktailDetails(cocktail: any): void {
-    console.log('cocktails detail', cocktail);
     this.cocktailDetail.set(cocktail);
     this.cockTailIngredients.set(this.parseIngredients(cocktail));
   }
 
   countAmountsAlcohol(cocktails: Cocktail[]) {
-    if(cocktails){
+    if(cocktails.length > 0){
     const counts = cocktails.reduce(
       (acc, cocktail) => {
         if (cocktail.strAlcoholic === 'Alcoholic') {

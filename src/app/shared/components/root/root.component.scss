@@ -1,3 +1,5 @@
+@use 'variables' as *;;
+
 section {
   margin-bottom: 1.5rem;
 
@@ -6,7 +8,7 @@ section {
     flex-wrap: wrap;
     gap: 1rem;
     align-items: center;
-    background: rgba(31, 41, 55, 0.6);
+    background: #1f2937;
     backdrop-filter: blur(8px);
     padding: 1rem 1.5rem;
     border-radius: 1rem;
@@ -33,29 +35,10 @@ section {
 
       &:focus {
         outline: none;
-        border-color: #2563eb;
-        box-shadow: 0 0 8px #2563eb;
+        box-shadow: 0 0 8px #f9fafb;
         transform: translateY(-1px);
       }
-    }
-
-    p-button {
-      --button-bg: #2563eb;
-      --button-color: #f9fafb;
-      --button-border-radius: 0.75rem;
-      transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.2s ease;
-
-      &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.7);
-        background: #1d4ed8;
-      }
-
-      &:active {
-        transform: translateY(0);
-        box-shadow: 0 3px 10px rgba(37, 99, 235, 0.5);
-      }
-    }
+    }  
   }
 }
 

@@ -15,6 +15,10 @@ import { TagModule } from 'primeng/tag';
 import { Popover, PopoverModule } from 'primeng/popover';
 import { Router } from '@angular/router';
 import { Cocktail } from '../../models/cocktail.model';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { DialogService } from '../../../core/dialog.service';
+import { ModalIngredientsComponent } from '../modal-ingredients/modal-ingredients.component';
+import { SilderImagesComponent } from '../silder-images/silder-images.component';
 
 @Component({
   selector: 'app-cocktail-table',
@@ -27,12 +31,17 @@ import { Cocktail } from '../../models/cocktail.model';
     ButtonModule,
     TagModule,
     PopoverModule,
+    ProgressSpinnerModule,
+    ModalIngredientsComponent,
+    SilderImagesComponent
   ],
   templateUrl: './cocktail-table.component.html',
   styleUrls: ['./cocktail-table.component.scss'],
 })
 export class CocktailTableComponent implements OnInit {
   sharedDataService = inject(SharedDataService);
+    private dialogService = inject(DialogService);
+
   @ViewChild('op') op!: Popover;
   selectedProduct: Cocktail | undefined;
   newData = computed(() => {
@@ -51,7 +60,6 @@ export class CocktailTableComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    console.log("newDatanewData", this.newData())
   }
 
   getSeverity(product: Cocktail) {
@@ -66,7 +74,6 @@ export class CocktailTableComponent implements OnInit {
   }
 
   displayProduct(event: any, cocktailSelected: Cocktail) {
-    console.log('productproduct', cocktailSelected);
     if (this.selectedProduct?.idDrink === cocktailSelected.idDrink) {
       this.op.hide();
       this.selectedProduct = undefined;
@@ -105,5 +112,14 @@ export class CocktailTableComponent implements OnInit {
     } else {
       window.open(videoUrl, '_blank');
     }
+  }
+
+  openDialog(cocktail : Cocktail) {
+    this.sharedDataService.cocktailDetails(cocktail);
+    this.dialogService.openDialog();
+  }
+
+  openDialogImage() {
+    this.dialogService.openDialogImage();
   }
 }

@@ -1,0 +1,94 @@
+@use 'variables' as *;
+:root{
+--p-select-option-focus-background : $color-gray !important;
+--p-select-option-selected-focus-background : $color-gray !important;
+--p-select-option-selected-background : $color-gray !important;
+--p-select-option-selected-color : $color-font !important;
+--p-select-option-selected-focus-color : $color-font !important;
+--p-select-focus-ring-color : $color-font !important;
+--p-select-border-radius: 25px !important;
+background-color: white;
+--p-content-border-radius:  0px 0px 15px 15px !important;
+--p-datatable-row-background  : #1f2937  !important;
+--p-datatable-header-cell-background : #1f2937  !important;
+}
+
+::ng-deep .p-paginator {
+  button {
+    margin: 0.1vw;
+  }
+
+  .p-paginator-first, .p-paginator-last {
+    display: none;
+  }
+
+  .p-paginator-page,
+  .p-paginator-prev,
+  .p-paginator-next {
+    &:hover {
+      background: $color-primary;
+      color: $color-white;
+      transform: translateY(-1px);
+      box-shadow: $shadow-soft;
+    }
+
+    &.p-highlight {
+      background: $color-accent;
+      color: $color-bg;
+      font-weight: bold;
+      border: 1px solid $color-primary;
+      box-shadow: $shadow-default;
+    }
+  }
+
+  .p-paginator-page.p-paginator-page-selected {
+    background: $color-bg-secondary;
+    color: $color-font;
+    border: 1px solid transparent;
+    border-radius: $radius-sm;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    transition: 
+      background 0.2s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+ }
+
+  .p-paginator-current {
+    opacity: 0.7;
+    font-size: 0.85rem;
+    font-style: italic;
+  }
+}
+
+::ng-deep .p-button:not(:disabled) {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 2rem;
+  color: $color-font;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
+  transition: all 0.3s ease-in-out;
+}
+
+::ng-deep.p-button:not(:disabled):hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  color: $color-font !important;
+  transform: translateY(-3px) scale(1.03) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25) !important;
+}
+
+.p-paginator-content-start {
+  display: flex !important;
+  border-radius: 20px !important;
+  p {
+  margin: 0.5vw !important;
+  }
+}
+
+.p-datatable-table-container{
+  border-radius: 15px 15px 0px 0px !important;
+}

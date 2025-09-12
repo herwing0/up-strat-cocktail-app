@@ -1,3 +1,7 @@
-/* src/styles.css */
-@import "primeicons/primeicons.css";
-@import "primeflex/primeflex.css";
+@use 'prime-ng-style' as *;
+@import 'primeicons/primeicons.css';
+
+
+.p-select-label {
+    color: white !important
+}

@@ -1,0 +1,22 @@
+<p-dialog  
+  [(visible)]="visible"
+  [modal]="true"
+  [closable]="true"
+  (onHide)="onDialogHide()">
+  <p-galleria
+    [value]="images()"
+    [showThumbnails]="true"
+    [showItemNavigators]="true"
+    [circular]="true"
+  >
+  <ng-template #item let-item>
+    <div class="galleria-item-container">
+      <img [src]="item.itemImageSrc" alt="{{ item.alt }}" style="width: 65%; object-fit: cover;" />
+      <div class="image-title">{{ item.title }}</div>
+    </div>
+  </ng-template>
+    <ng-template #thumbnail let-item>
+        <img (click)="goCocktail(item.cocktail)" class="product-image" [src]="item.thumbnailImageSrc" />
+    </ng-template>
+  </p-galleria>
+</p-dialog>

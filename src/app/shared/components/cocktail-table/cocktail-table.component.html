@@ -20,10 +20,10 @@
     </ng-template>
     <ng-template #body let-cocktail>
       <tr>
-        <td style="width: 5%" (click)="goCocktail(cocktail)">
+        <td class="td-click" style="width: 5%" (click)="goCocktail(cocktail)">
           {{ cocktail.idDrink }}
         </td>
-        <td style="width: 5%" (click)="displayProduct($event, cocktail)">
+        <td class="td-click" style="width: 5%" (click)="displayProduct($event, cocktail)">
           <img
             [src]="cocktail.strDrinkThumb + '/small'"
             [alt]="cocktail.image"
@@ -31,13 +31,22 @@
           />
         </td>
         <td>{{ cocktail.strDrink }}</td>
-        <td>{{ cocktail.strCategory }}</td>
+        <td class="td-click" (click)="openDialogImage()">{{ cocktail.strCategory }}</td>
         <td>{{ cocktail.strAlcoholic }}</td>
-        <td style="width: 5%">
+        <td class="td-click" style="width: 5%" (click)="openDialog(cocktail)">
           {{ countIngredients(cocktail) }}
         </td>
         <td>{{ cocktail.dateModified | date : "medium" }}</td>
       </tr>
+    </ng-template>
+
+    <ng-template pTemplate="paginatorleft">
+      <p>
+        {{`Cantidad de Alcohlicas : ${amountstrAlcoholic().alcoholic}`}}
+      </p>
+      <p>
+        {{`Cantidad de No Alcohlicas : ${amountstrAlcoholic().nonAlcoholic}`}}
+      </p>
     </ng-template>
   </p-table>
 
@@ -53,7 +62,11 @@
           <p-tag
             [value]="selectedProduct.strAlcoholic"
             [severity]="getSeverity(selectedProduct)"
-            class="inventory-tag"
+            [ngClass]="{
+              'inventory-tag': true,
+              alcoholic: selectedProduct.strAlcoholic === 'Alcoholic',
+              'non-alcoholic': selectedProduct.strAlcoholic !== 'Alcoholic'
+            }"
           />
         </div>
 
@@ -88,13 +101,8 @@
     </ng-template>
   </p-popover>
 </div>
+}
 
-@if(amountstrAlcoholic()){
-<p>
-  {{`Cantidad de Alcohlicas : ${amountstrAlcoholic().alcoholic}`}}
-</p>
-<p>
-  {{`Cantidad de No Alcohlicas : ${amountstrAlcoholic().nonAlcoholic}`}}
-</p>
-}
-}
+<app-modal-ingredients></app-modal-ingredients>
+
+<app-silder-images></app-silder-images>

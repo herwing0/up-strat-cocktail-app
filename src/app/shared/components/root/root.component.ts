@@ -39,12 +39,13 @@ export class RootComponent   {
           const type = this.filterTypeControl.value;
           if (!value) return [ [] ];
           this.loading = true;
+          this.error = false;
           return this.cocktailService.filterCocktails(type!, value);
         })
       )
       .subscribe({
         next: data => {
-          if(data.drinks){
+          if(data.drinks && data.drinks !== "no data found"){
           this.sharedDataService.updateTable(data.drinks);
           } else {
           this.error = true
