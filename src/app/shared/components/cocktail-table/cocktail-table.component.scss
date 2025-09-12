@@ -1,0 +1,190 @@
+.card {
+  padding: 1rem;
+  background: #1f2937;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+  }
+}
+
+.product-table {
+  min-width: 50rem;
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+
+  th {
+    width: calc(100% / 6);
+    text-align: left;
+    padding: 0.75rem;
+    color: #d1d5db;
+    font-weight: 600;
+  }
+
+  td {
+    padding: 0.75rem;
+    vertical-align: middle;
+    color: #f9fafb;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  img.product-image {
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1) rotate(-2deg);
+    }
+  }
+}
+
+.popover-content {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  padding: 1rem;
+  background: #111827;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+  animation: popoverFade 0.25s ease-out forwards;
+
+  @keyframes popoverFade {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .product-image-wrapper {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 1rem;
+
+    img.product-large {
+      width: 11rem;
+      @media (min-width: 640px) {
+        width: 16rem;
+      }
+      border-radius: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
+      }
+    }
+
+    .inventory-tag {
+      position: absolute;
+      top: 0.25rem;
+      left: 0.25rem;
+      background: #374151;
+      color: #f9fafb;
+      transition: transform 0.2s ease;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .product-info {
+    .title-section {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+
+      .category {
+        font-weight: 500;
+        font-size: 0.875rem;
+        color: #9ca3af;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+      }
+
+      .name {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-top: 0.25rem;
+        color: #f9fafb;
+      }
+
+      .rating {
+        background: #374151;
+        padding: 0.25rem;
+        border-radius: 30px;
+        .rating-inner {
+          background: #1f2937;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          padding: 0.25rem 0.5rem;
+          border-radius: 30px;
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+          transition: transform 0.2s ease;
+          &:hover {
+            transform: scale(1.1);
+          }
+
+          .value {
+            font-weight: 500;
+            font-size: 0.875rem;
+            color: #f9fafb;
+          }
+          i {
+            color: #fbbf24;
+          }
+        }
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+
+      .buy-button {
+        flex: 0.6;
+        width: 100%;
+        white-space: nowrap;
+        color: #f9fafb;
+        border-radius: 0.5rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease,
+          background 0.2s ease;
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+        }
+      }
+
+      .favorite-button {
+        border: 1px solid #6b7280;
+        color: #f9fafb;
+        border-radius: 0.5rem;
+        transition: transform 0.2s ease, color 0.2s ease;
+        &:hover {
+          transform: scale(1.1);
+          color: #f87171;
+        }
+      }
+
+      .favorite-button.disabled-button {
+        opacity: 0.5;
+        cursor: not-allowed;
+        filter: grayscale(100%);
+      }
+    }
+  }
+}
+
+

@@ -1,0 +1,100 @@
+@if(newData().length > 0){
+<div class="card">
+  <p-table
+    [value]="newData()"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [paginator]="true"
+    [rows]="8"
+    class="product-table"
+  >
+    <ng-template #header>
+      <tr>
+        <th style="width: 5%">ID</th>
+        <th style="width: 5%">Imagen</th>
+        <th>Nombre</th>
+        <th>Categoria</th>
+        <th>Tipo</th>
+        <th style="width: 5%">Cantidad</th>
+        <th>Fecha</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-cocktail>
+      <tr>
+        <td style="width: 5%" (click)="goCocktail(cocktail)">
+          {{ cocktail.idDrink }}
+        </td>
+        <td style="width: 5%" (click)="displayProduct($event, cocktail)">
+          <img
+            [src]="cocktail.strDrinkThumb + '/small'"
+            [alt]="cocktail.image"
+            class="product-image"
+          />
+        </td>
+        <td>{{ cocktail.strDrink }}</td>
+        <td>{{ cocktail.strCategory }}</td>
+        <td>{{ cocktail.strAlcoholic }}</td>
+        <td style="width: 5%">
+          {{ countIngredients(cocktail) }}
+        </td>
+        <td>{{ cocktail.dateModified | date : "medium" }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <p-popover #op (onHide)="selectedProduct = undefined">
+    <ng-template #content>
+      <div *ngIf="selectedProduct" class="popover-content">
+        <div class="product-image-wrapper">
+          <img
+            class="product-large"
+            [src]="selectedProduct.strDrinkThumb + '/medium'"
+            [alt]="selectedProduct.strDrinkThumb"
+          />
+          <p-tag
+            [value]="selectedProduct.strAlcoholic"
+            [severity]="getSeverity(selectedProduct)"
+            class="inventory-tag"
+          />
+        </div>
+
+        <div class="product-info">
+          <div class="title-section">
+            <div>
+              <span class="category">{{ selectedProduct.strCategory }}</span>
+              <div class="name">{{ selectedProduct.strDrink }}</div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <p-button
+              (click)="goCocktail(selectedProduct)"
+              icon="pi pi-sparkles"
+              [label]="'Detalles'"
+              class="buy-button"
+              (onClick)="hidePopover()"
+            />
+            <p-button
+              icon="pi pi-youtube"
+              outlined
+              [ngClass]="{ 'disabled-button': !selectedProduct.strVideo }"
+              class="favorite-button"
+              [disabled]="!selectedProduct.strVideo"
+              (onClick)="goToYoutube(selectedProduct.strVideo)"
+            >
+            </p-button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-popover>
+</div>
+
+@if(amountstrAlcoholic()){
+<p>
+  {{`Cantidad de Alcohlicas : ${amountstrAlcoholic().alcoholic}`}}
+</p>
+<p>
+  {{`Cantidad de No Alcohlicas : ${amountstrAlcoholic().nonAlcoholic}`}}
+</p>
+}
+}

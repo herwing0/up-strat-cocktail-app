@@ -1,0 +1,36 @@
+<section class="details-container">
+  <div class="back-btn">
+    <p-button icon="pi pi-arrow-left" label="Go Back" styleClass="p-button-sm p-button-rounded p-button-secondary"
+      (onClick)="goBack()">
+    </p-button>
+  </div>
+
+  @if(cocktail()){
+  <div class="details-card">
+    <div class="header">
+      <img [src]="cocktail().strDrinkThumb" [alt]="cocktail().strDrink" class="thumb" />
+      <div class="info">
+        <h2>{{ cocktail().strDrink }}</h2>
+        <p class="category">
+          {{ cocktail().strCategory }} · {{ cocktail().strAlcoholic }}
+        </p>
+        <p class="date">{{ cocktail().dateModified | date : "medium" }}</p>
+      </div>
+    </div>
+
+    <div class="instructions">
+      <h3>Instruciones</h3>
+      <p>{{ cocktail().strInstructions }}</p>
+    </div>
+
+    <div class="ingredients">
+      <h3>Ingredientes ({{ ingredientes().length }})</h3>
+      <ul>
+        @for(ing of ingredientes(); track ing){
+        <li><i class="pi pi-check-circle"></i> {{ ing }}</li>
+        }
+      </ul>
+    </div>
+  </div>
+  }
+</section>

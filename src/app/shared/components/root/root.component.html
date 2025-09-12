@@ -1,0 +1,31 @@
+<section>
+<form>
+   <p-select 
+   appendTo="body"
+      [options]="[
+        {label: 'By Name', value: 'name'},
+        {label: 'By First Letter', value: 'firstLetter'},
+      ]"
+      [formControl]="filterTypeControl"
+      placeholder="Select Filter">
+    </p-select>
+<input type="text" placeholder="Filter by city" [formControl]="filterValueControl" />
+<p-button (click)="goRandom()">GO RANDOM</p-button>
+
+</form>
+<div>
+</div>
+</section>
+@if(this.loading){
+<div class="spinner-container">
+  <p-progress-spinner ariaLabel="loading"></p-progress-spinner>
+</div>
+} @else {
+<app-cocktail-table></app-cocktail-table>
+}
+
+@if(error){
+    <div class="error">
+ <img [src]="notFound">
+  </div>
+}
