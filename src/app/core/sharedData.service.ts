@@ -10,12 +10,12 @@ export class SharedDataService {
   cockTailIngredients: WritableSignal<any> = signal<any>({});
   amountstrAlcoholic: WritableSignal<any> = signal<any>(undefined);
 
-  updateTable(cocktails: any): void {
+  updateTable(cocktails: Cocktail[]): void {
     this.tableData.set(cocktails);
     this.countAmountsAlcohol(cocktails);
   }
 
-  cocktailDetails(cocktail: any): void {
+  cocktailDetails(cocktail: Cocktail): void {
     this.cocktailDetail.set(cocktail);
     this.cockTailIngredients.set(this.parseIngredients(cocktail));
   }

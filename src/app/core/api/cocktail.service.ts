@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
+import { Cocktail } from '../../shared/models/cocktail.model';
 
 const API = 'https://www.thecocktaildb.com/api/json/v1/1/';
 
@@ -8,7 +9,7 @@ const API = 'https://www.thecocktaildb.com/api/json/v1/1/';
 export class CocktailService {
   constructor(private http: HttpClient) {}
 
-  randomCocktail(): Observable<any|null> {
+  randomCocktail(): Observable<Cocktail> {
     return this.http.get<{drinks:any[]}>(`${API}/random.php`)
       .pipe(map(res => (res.drinks && res.drinks.length ? res.drinks[0] : null)));
   }
